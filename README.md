@@ -89,4 +89,3 @@ The app automatically falls back to Ollama if Groq is unavailable.
 
 <p align="center">Built with ❤️ · Powered by Groq + MediaPipe · Real-time finger math</p>
 <p align="center">If this is useful, give it a ⭐</p>
-
