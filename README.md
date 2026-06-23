@@ -1,10 +1,11 @@
 # ✍️ Math Vision — AI Finger Math Solver
 
-Draw math expressions in the air with your index finger. Write `=` and the answer appears instantly. Powered by Claude AI + MediaPipe.
+Draw math expressions in the air with your index finger. Write `=` and the answer appears instantly — powered by Groq AI + MediaPipe, running in real time.
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python)](https://python.org)
 [![MediaPipe](https://img.shields.io/badge/MediaPipe-Hands-green)](https://mediapipe.dev)
-[![Claude](https://img.shields.io/badge/Claude-Haiku-orange?logo=anthropic)](https://anthropic.com)
+[![Groq](https://img.shields.io/badge/Groq-LLaMA_4-orange)](https://groq.com)
+[![Ollama](https://img.shields.io/badge/Ollama-Local_LLM-purple)](https://ollama.com)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
 ---
@@ -13,13 +14,14 @@ Draw math expressions in the air with your index finger. Write `=` and the answe
 
 | Gesture | Action |
 |---|---|
-| ☝️ Index finger | Draw on screen |
-| 🖐 Open hand | Erase everything |
-| ✏️ Write `=` | Auto-solve the expression |
+| ☝️ Index finger up | Hover / move cursor |
+| 🤌 Pinch (thumb + index) | Draw on screen |
+| 🖐 Open hand | Erase where palm moves |
+| ✏️ Write `=` at the end | Auto-solve the expression |
 
-Write any math expression with your finger, add `=` at the end, and Claude AI reads your handwriting and returns the answer in real time.
+Write any math expression with your finger, add `=` at the end, release your pinch — the answer appears right next to the `=` sign in handwriting style.
 
-**Supports:** `2 + 2`, `5 × 3`, `√16`, `2²`, `100 / 4`, `(3 + 5) × 2` — anything Claude can read.
+**Supports:** `2 + 2`, `5 × 3`, `2²`, `√16`, `100 / 4`, `(3 + 5) × 2` and more.
 
 ---
 
@@ -32,10 +34,10 @@ python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-Set your Anthropic API key:
+Create a `.env` file with your Groq API key (free at [console.groq.com](https://console.groq.com)):
 
 ```bash
-export ANTHROPIC_API_KEY=your_key_here
+echo "GROQ_API_KEY=your_key_here" > .env
 ```
 
 Run:
@@ -46,11 +48,34 @@ python main.py
 
 ---
 
+## 🖥️ Local LLM (No API Key)
+
+You can run fully offline using [Ollama](https://ollama.com):
+
+```bash
+ollama pull llava-phi3
+```
+
+The app automatically falls back to Ollama if Groq is unavailable.
+
+---
+
 ## 🏗️ Stack
 
-- **[MediaPipe Hands](https://mediapipe.dev)** — real-time finger tracking
-- **[Claude Haiku](https://anthropic.com)** — reads handwritten math expressions
-- **[OpenCV](https://opencv.org)** — webcam + drawing canvas
+- **[MediaPipe Hands](https://mediapipe.dev)** — real-time finger + gesture tracking
+- **[Groq](https://groq.com)** (LLaMA 4 Scout) — ultra-fast AI math recognition
+- **[Ollama](https://ollama.com)** — local LLM fallback (llava-phi3)
+- **[OpenCV](https://opencv.org)** — webcam feed + drawing canvas
+
+---
+
+## ⌨️ Keyboard Shortcuts
+
+| Key | Action |
+|---|---|
+| `C` | Clear canvas and all answers |
+| `Space` | Solve immediately |
+| `Q` | Quit |
 
 ---
 
@@ -58,9 +83,9 @@ python main.py
 
 - Python 3.10+
 - Webcam
-- Anthropic API key (get one free at [console.anthropic.com](https://console.anthropic.com))
+- Groq API key (free) **or** Ollama installed locally
 
 ---
 
-<p align="center">Built with ❤️ · Powered by Claude AI · Real-time finger math</p>
-<p align="center">If this is cool, give it a ⭐</p>
+<p align="center">Built with ❤️ · Powered by Groq + MediaPipe · Real-time finger math</p>
+<p align="center">If this is useful, give it a ⭐</p>
