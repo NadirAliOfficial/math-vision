@@ -1,0 +1,4 @@
+anthropic
+opencv-python
+mediapipe
+numpy
